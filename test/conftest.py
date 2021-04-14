@@ -1,14 +1,14 @@
 from typing import List
-import inspect
-
-
+from priost.input.finder import SourceCodeFinder
 from _pytest.config import Config
 from pytest import *
 
 
 def pytest_collection_modifyitems(session: Session, config: Config, items: List[Item]):
     for tc in items:
-        print()
+        finder = SourceCodeFinder()
+        code = finder.find_source_code(tc)
+        print(code)
 
 
 
